@@ -302,9 +302,12 @@ function getModelYears(data) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(data, carID) {
+  let carIndex = carID-1;
+    return `This is a ${data[carIndex].car_make} ${data[carIndex].car_model}`;
 }
+
+// console.log(getCarInfoById(data, 1));
 
 /**
  * ### Challenge `getOlderCars`
@@ -320,9 +323,19 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(data, year) {
+  let olderCars = [];
+  for(i = 0; i < data.length; i++){
+    if (data[i].car_year <= year){
+      olderCars.push(data[i]);
+    }
+  }
+  return olderCars;
 }
+
+// console.log(getOlderCars(data, 1999));
+
+
 
 /**
  * ### Challenge `getGermanCars`
@@ -337,9 +350,17 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(data) {
+  let germanCars = [];
+  for(i = 0; i < data.length; i++){
+    if ((data[i].car_make === 'Audi') || (data[i].car_make === 'Mercedes-Benz') || (data[i].car_make === 'Volkswagen') || (data[i].car_make === 'BMW')){
+      germanCars.push(data[i]);
+    }
+  }
+  return germanCars;
 }
+
+// console.log(getGermanCars(data));
 
 /**
  * ### Challenge `carMaker`
@@ -354,7 +375,16 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(odometerN) {
+  
+  let letsDrive = {
+    odometer: odometerN,
+    drive: function(distance){
+      this.odometer = odometerN + distance;
+      console.log(this.odometer);
+    }
+  }
+  return letsDrive;
 }
 
+// carMaker(17236134).drive(1);
