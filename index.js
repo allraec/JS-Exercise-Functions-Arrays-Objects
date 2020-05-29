@@ -212,6 +212,8 @@ var inventory = [
   { id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }
 ]
 
+var data = require('./data/inventory.js'); 
+
 /**
   * ### Example Array Challenge:
   * 
@@ -260,9 +262,12 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(data) {
+  let lastCarIndex = data.length-1;
+  return `This is a ${data[lastCarIndex].car_make} ${data[lastCarIndex].car_model}`;
 }
+
+// console.log(getLastCarInfo(data));
 
 /**
  * ### Challenge `getModelYears`
@@ -273,9 +278,15 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(data) {
+  let yearsArray = [];
+  for(i = 0; i < data.length; i++){
+    yearsArray.push(data[i].car_year);
+  }
+  return yearsArray;
 }
+
+// console.log(getModelYears(data));
 
 /**
  * ### Challenge `getCarInfoById`
